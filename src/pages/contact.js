@@ -50,8 +50,8 @@ const Contact = () => (
         <Link to="/">{config.siteTitle}</Link>
       </Header>
       <Content>
-        <h1>Contact</h1>
-        <p>Super cool intro text to get people contacting me! It uses Netlify's form feature.</p>
+        <h1>I'd love to hear from you!</h1>
+        <p>If you have ideas or questions on any topic I covered on this site please feel free to contact me.</p>
         <form name="contact-form" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/success">
           <p>
             <label htmlFor="contact-name">
