@@ -1,6 +1,6 @@
 # James Faeldon Blog
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9289d080-75b7-43d4-bf90-16af8b0467da/deploy-status)](https://app.netlify.com/sites/faeldon/deploys)
+[![CircleCI](https://circleci.com/gh/faeldon/faeldon-website.svg?style=svg)](https://circleci.com/gh/faeldon/faeldon-website) [![Netlify Status](https://api.netlify.com/api/v1/badges/9289d080-75b7-43d4-bf90-16af8b0467da/deploy-status)](https://app.netlify.com/sites/faeldon/deploys)
 
 [Demo Website](https://james.faeldon.com)
 
