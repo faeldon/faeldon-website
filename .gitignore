@@ -48,7 +48,6 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
-
 # Build Files
 public/
 .cache/
@@ -58,3 +57,6 @@ public/
 
 # Bundle stats
 bundle-stats.json
+
+# Cruft
+.DS_Store
