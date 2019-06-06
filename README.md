@@ -50,14 +50,6 @@ $ npm run build
 $ npm run serve
 ```
 
-## Getting Started (Without Netlify)
-```
-$ gatsby new [SITE_DIRECTORY_NAME] https://github.com/netlify-templates/gatsby-starter-netlify-cms/
-$ cd [SITE_DIRECTORY_NAME]
-$ npm run build
-$ npm run serve
-```
-
 # CONTRIBUTING
 
 Contributions are always welcome, no matter how large or small. Before contributing,
