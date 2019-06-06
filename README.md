@@ -57,7 +57,3 @@ $ npm run serve
 
 Contributions are always welcome, no matter how large or small. Before contributing,
 please read the [code of conduct](CODE_OF_CONDUCT.md).
-
-And if you like to help by funding my open source projects, you can do that through Ko-Fi.
-
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y2WTQ9)

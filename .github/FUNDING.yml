@@ -1,8 +1,8 @@
 # These are supported funding model platforms
 
 github: [jafaeldon]
-patreon: jafaeldon
-open_collective: jafaeldon # Replace with a single Open Collective username
+patreon:
+open_collective:
 ko_fi: jafaeldon
-tidelift: # Replace with a single Tidelift platform-name/package-name e.g., npm/babel
-custom: # Replace with a single custom sponsorship URL
+tidelift:
+custom:
