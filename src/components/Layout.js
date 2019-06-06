@@ -205,7 +205,7 @@ const Layout = ({ children, customSEO }) => {
         {children}
         <Footer>
           &copy; 2019 by James Faeldon. All rights reserved. <br />
-          {/* <a href="https://github.com/faeldon/faeldon-website">GitHub Repository</a> <br /> */}
+          <a href="https://github.com/faeldon/faeldon-website">GitHub Repository</a> <br />
           <span>Last build: {buildTime}</span>
         </Footer>
       </>
