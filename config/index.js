@@ -9,7 +9,8 @@ module.exports = {
   siteHeadline: 'A personal commitment to working more in the open', // Headline for schema.org JSONLD
   siteBanner: '/social/banner.jpg', // Your image for og:image tag. You can find it in the /static folder
   favicon: 'src/favicon.png', // Your image for favicons. You can find it in the /src folder
-  siteDescription: 'Personal blog of James Faeldon topics range from useful code snippets to passion projects and anything in between.', // Your site description
+  siteDescription:
+    'Personal blog of James Faeldon topics range from  useful code snippets to passion projects and anything in between.', // Your site description
   author: 'James Faeldon', // Author for schemaORGJSONLD
   siteLogo: '/social/logo.png', // Image for schemaORGJSONLD
 
