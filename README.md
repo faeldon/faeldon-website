@@ -1,8 +1,11 @@
 # James Faeldon Blog
 
-[![CircleCI](https://circleci.com/gh/faeldon/faeldon-website.svg?style=svg)](https://circleci.com/gh/faeldon/faeldon-website) [![Netlify Status](https://api.netlify.com/api/v1/badges/9289d080-75b7-43d4-bf90-16af8b0467da/deploy-status)](https://app.netlify.com/sites/faeldon/deploys)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://raw.githubusercontent.com/faeldon/faeldon-website/master/license)
+[![CircleCI](https://circleci.com/gh/faeldon/faeldon-website.svg?style=svg)](https://circleci.com/gh/faeldon/faeldon-website)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9289d080-75b7-43d4-bf90-16af8b0467da/deploy-status)](https://app.netlify.com/sites/faeldon/deploys)
+[![Chat with me at https://gitter.im/faeldon/faeldon-website](https://badges.gitter.im/faeldon/faeldon-website.svg)](https://gitter.im/faeldon/faeldon-website?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[Demo Website](https://james.faeldon.com)
+[View the Website](https://james.faeldon.com)
 
 Typography driven blog site, focus on the content, code & minimal style.
 
