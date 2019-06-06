@@ -51,7 +51,7 @@ const IndexPage = ({
       <Hero>
         <h1>Hi.</h1>
         <p>
-          I&apos;m James Faeldon a software engineer and tech entrepreneur living in Manila. And this blog site is my
+          I&apos;m James Faeldon a software engineer and tech entrepreneur living in Manila. And this blog is my
           personal commitment to working more in the open.
         </p>
         <Link to="/contact">
