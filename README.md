@@ -1,28 +1,16 @@
-# Gatsby Starter: Minimal Blog
+# James Faeldon Blog
 
-Typography driven, focus on the content & minimal style. Powered by MDX.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9289d080-75b7-43d4-bf90-16af8b0467da/deploy-status)](https://app.netlify.com/sites/faeldon/deploys)
 
-[Demo Website](https://minimal-blog.lekoarts.de)
+[Website](https://james.faeldon.com)
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/LekoArts/gatsby-starter-minimal-blog) [![Edit gatsby-starter-minimal-blog](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/LekoArts/gatsby-starter-minimal-blog/tree/master/)
+Typography driven blog site, focus on the content, code & minimal style.
 
-[![CircleCI](https://circleci.com/gh/LekoArts/gatsby-starter-minimal-blog.svg?style=svg)](https://circleci.com/gh/LekoArts/gatsby-starter-minimal-blog) [![Netlify Status](https://api.netlify.com/api/v1/badges/f466015c-14f4-440d-a92b-0b0e30de609a/deploy-status)](https://app.netlify.com/sites/minimal-blog/deploys)
+It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and [Netlify](https://www.netlify.com) for continuous deployment, and CDN distribution.
 
-## About Me
+This repo is built with [Gatsby](https://www.gatsbyjs.org/), and [Netlify CMS](https://www.netlifycms.org): **[Demo Link](https://gatsby-netlify-cms.netlify.com/)**.
 
-I hope you like my starters and create something awesome! To see some of my work you can visit my [website](https://www.lekoarts.de) or support me on [Patreon](https://www.patreon.com/lekoarts) to get some neat rewards (4K images, project files, tutorial insights). Every pledge on Patreon helps me creating more free starters!
-
-Also check out the other _gatsby-starters_:
-
-- [gatsby-starter-portfolio-emma](https://github.com/LekoArts/gatsby-starter-portfolio-emma)
-- [gatsby-starter-portfolio-emilia](https://github.com/LekoArts/gatsby-starter-portfolio-emilia)
-- [gatsby-starter-portfolio-bella](https://github.com/LekoArts/gatsby-starter-portfolio-bella)
-- [gatsby-starter-portfolio-cara](https://github.com/LekoArts/gatsby-starter-portfolio-cara)
-- [gatsby-starter-portfolio-jodie](https://github.com/LekoArts/gatsby-starter-portfolio-jodie)
-- [gatsby-starter-prismic](https://github.com/LekoArts/gatsby-starter-prismic)
-- [gatsby-starter-prismic-i18n](https://github.com/LekoArts/gatsby-starter-prismic-i18n)
-
-Check out the [Gatsby Starter Portfolio Overview](https://gatsby-starter-portfolio.netlify.com/)!
+Web design by [LekoArts Minimal Blog](https://github.com/LekoArts/gatsby-starter-minimal-blog)
 
 ## Features
 
@@ -39,31 +27,38 @@ Check out the [Gatsby Starter Portfolio Overview](https://gatsby-starter-portfol
   - OpenGraph Tags
   - Twitter Tags
 
-## Getting Started
+## Getting Started (Recommended)
 
-Check your development environment! You'll need [Node.js](https://nodejs.org/en/), the [Gatsby CLI](https://www.gatsbyjs.org/docs/) and [node-gyp](https://github.com/nodejs/node-gyp#installation) installed. The official Gatsby website also lists two articles regarding this topic:
+Netlify CMS can run in any frontend web environment, but the quickest way to try it out is by running it on a pre-configured starter site with Netlify. The example here is the Kaldi coffee company template (adapted from [One Click Hugo CMS](https://github.com/netlify-templates/one-click-hugo-cms)). Use the link below to build and deploy your own copy of the repository:
 
-- [Gatsby on Windows](https://www.gatsbyjs.org/docs/gatsby-on-windows/)
-- [Check your development environment](https://www.gatsbyjs.org/tutorial/part-zero/)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/faeldon/faeldon-website&amp;stack=cms)
 
-To copy and install this starter run this command (with "project-name" being the name of your folder you wish to install it in):
+After clicking the link, you’ll authenticate with GitHub and choose a repository name. Netlify will then automatically create a repository in your GitHub account with a copy of the files from the template. Next, it will build and deploy the new site on Netlify, bringing you to the site dashboard when the build is complete. Next, you’ll need to set up Netlify’s Identity service to authorize users to log in to the CMS.
 
+
+### Access Locally
 ```
-gatsby new project-name https://github.com/LekoArts/gatsby-starter-minimal-blog
-cd project-name
-npm run develop
-```
-
-### Adding new features/plugins
-
-You can add other features by having a look at the official [plugins page](https://www.gatsbyjs.org/docs/plugins/)
-
-### Building your site
-
-```
-npm run build
+$ git clone https://github.com/[GITHUB_USERNAME]/[REPO_NAME].git
+$ cd [REPO_NAME]
+$ yarn
+$ npm run start
 ```
 
-Copy the content of the `public` folder to your webhost or use a website like Netlify which automates that for you.
+To test the CMS locally, you'll need run a production build of the site:
+```
+$ npm run build
+$ npm run serve
+```
 
-**Attention:** You also need to edit `static/robots.txt` to include your domain!
+## Getting Started (Without Netlify)
+```
+$ gatsby new [SITE_DIRECTORY_NAME] https://github.com/netlify-templates/gatsby-starter-netlify-cms/
+$ cd [SITE_DIRECTORY_NAME]
+$ npm run build
+$ npm run serve
+```
+
+# CONTRIBUTING
+
+Contributions are always welcome, no matter how large or small. Before contributing,
+please read the [code of conduct](CODE_OF_CONDUCT.md).
