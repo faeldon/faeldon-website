@@ -1,0 +1,67 @@
+---
+date: "2019-06-09"
+title: "JSON Maps of Philippine Administrative Boundaries"
+categories:
+  - Coding
+  - Data Science
+---
+
+### Philippine administrative boundaries in geojson and topojson format at various resolution.
+
+[Github Project](https://github.com/faeldon/philippines-json-maps)
+
+The github repository contains Philippines vector maps suitable
+for use on web applications either as an overlay to interactive
+map services using [Leaflet](www.leafletjs.com) or rendered on
+natively using [d3js](www.d3js.org).
+
+## Background
+
+A few years ago, I was looking for low-resolution map files that
+I can use to render natural hazards map on the web. I found high-
+resolution shapefiles but I still have to do post-processing to
+optimize the maps to satisfy my requirements. Basically, high-
+resolution shapefiles are not really practical for rendering web
+maps because of their file size.
+
+I needed vector maps that can render fast. Also, I wanted to
+partition the map data so I can incrementally load portions of
+the map asynchronously. So I wrote a few scripts to do the
+conversion and partitioning that I needed.
+
+## How it Works
+
+1. Shapefiles to GeoJSON conversion with high fidelity was done using [ogr2ogr](https://gdal.org/programs/ogr2ogr.html).
+
+2. The high fidelity GeoJSON file is "downsampled" using [mapshaper](https://mapshaper.org/) with `-simplify` flag at 10% (hires), 1% (medres), 0.1% (lowres) settings.
+
+3. GeoJSON is then converted to a more compact topojson format using [geo2topo](https://github.com/topojson/topojson).
+
+The tools mentioned above can be used to do all sorts of
+post-processing on your shapefile. You can refer to the [scripts](https://github.com/faeldon/philippines-json-maps/tree/master/scripts)
+to see how I did it. I would recommend having a look at these
+tools if you want to customize your own transformations.
+
+## Sample Maps
+
+Files are generated for all locations in the Philippines at all
+administrative levels.
+
+The maps are partitioned per area and administrative levels. For
+example, each region map will show provincial boundaries in that region.
+
+Here is for Region II, Cagayan Valley Region:
+
+[provinces-region-cagayanvalleyregionii.topo.0.1.json](https://github.com/faeldon/philippines-json-maps/blob/master/topojson/provinces/hires/provinces-region-cagayanvalleyregionii.topo.0.1.json)
+
+The same with municipalities and cities.
+
+Here is for Metro Manila:
+
+[municities-province-47-metropolitanmanila.topo.0.1.json](https://github.com/faeldon/philippines-json-maps/blob/master/topojson/municities/hires/municities-province-47-metropolitanmanila.topo.0.1.json)
+
+## Contributing
+
+Contributions are always welcome, no matter how large or small.
+[Github Project Link](https://github.com/faeldon/philippines-json-maps)
+
