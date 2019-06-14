@@ -1,0 +1,173 @@
+---
+date: "2019-06-14"
+title: "A Simple Docker Image for Data Science Teams"
+categories:
+  - DevOps
+  - Data Science
+---
+
+### Standardize your data science development environment with this simple Docker image.
+
+[Github Project](https://github.com/faeldon/data-science-stack)
+
+The Github repository contains a common data science tech stack
+with Anaconda3, Jupyter and Databricks Connect built using Docker.
+
+Feel free to use this repository as a template to customize a stack for
+your own team by modifying the default `Dockerfile`.
+
+## Background
+
+I sometimes encounter data science teams just starting out with
+no idea on how to standardized dev environments.
+
+This practice is very common in software engineering and there
+are compelling reasons why you want to do this.
+
+A consistent tech stack across your team members would make
+debugging and deployment easier. Not to mention, making
+replicable research achievable in some contexts.
+
+I prefer using [Docker](https://docker.com) because it's more
+widely adopted for this use case and it's simple enough to setup
+whether users are on Windows or MacOS.
+
+## Quick Start
+
+The Docker image I made works out-of-the-box pre-installed with
+Annaconda3, Jupyter, and Databricks Connect.
+
+I included Databricks Connect, to demonstrate how to integrate
+cloud-scale data science workflows which most organizations
+typically have.
+
+If you want to try it out, just follow these steps.
+
+Let's get started!
+
+### 1. Install Git
+
+Make sure to install a git client on your machine.
+
+Chances are your editor or IDE of choice already has a git plugin. We
+recommend using that to streamline your workflow.
+
+If you prefer to work on the command line or a standalone GUI here's
+the link to git clients for Windows and MacOS users.
+
+[Install Git for Windows Users](https://git-scm.com/download/win)
+
+[Install Git for Mac Users](https://git-scm.com/download/mac)
+
+Once your Git client is set up, clone this project.
+
+  ```bash
+  git clone https:///github.com/faeldon/data-science-stack
+  ```
+
+### 2. Install Docker Desktop
+
+Install Docker Desktop For Windows and MacOS users. We need this to
+create the stack from scratch.
+
+[Install Docker Desktop](https://www.docker.com/products/docker-desktop)
+
+The installation would require a DockerHub account. Just signup for
+free, if you don't have an existing account.
+
+If you have successfully installed Docker Desktop, then the `docker`
+command should be available from your Terminal (MacOS) or Command
+Prompt (Windows).
+
+You can run the following command to verify your Docker installation.
+
+  ```bash
+  docker info
+  ```
+
+### 3. (Optional) Log in to Databricks and Create an Access Token
+
+If you're setting up Databricks you need to create an access token.
+
+Make sure you have access to a Databricks workspace and a cluster.
+
+Log in to Databricks and follow these instructions.
+
+[Generate an Access Token](https://docs.databricks.com/api/latest/authentication.html#generate-a-token).
+
+### 4. (Optional) Configure Databricks Connection
+
+Create a file called `databricks.env` inside the root of the project
+directory containing your Databricks setup. An example is shown below.
+Make sure to replace the token value with your access token from
+step 3. Jupyter will use this config to connect to your Databricks
+workspace.
+
+  ```bash
+  DATABRICKS_HOST=southeastasia.azuredatabricks.net
+  DATABRICKS_PORT=8787
+  DATABRICKS_CLUSTER_ID=0604-041034-yip666
+  DATABRICKS_ORG_ID=12312312312312312
+  DATABRICKS_TOKEN=<put_your_token_here>
+  ```
+
+### 5. Build and Run Docker Image
+
+Run the `docker-compose` command below.
+
+  ```bash
+  docker-compose up
+  ```
+
+The build process would take several minutes to download and install
+packages the first time it runs. After the Docker image is created on
+your local machine, the next time you run the above command should be
+quick.
+
+The image is persisted on your local machine and can be used across
+different projects. You can run `docker images` to check stored images
+on your machine.
+
+  ```bash
+  docker images
+  ```
+
+Most of the libraries we need are pre-installed and configured. If you
+need to install other 3rd-party packages feel free to edit the
+Dockerfile.
+
+### 6. Open Jupyter Notebook
+
+At the very end of the output log of step 5 shows a link to the
+Jupyter notebook -- similar to the example below.
+
+  ```bash
+  [C 10:34:15.520 NotebookApp]
+
+      To access the notebook, open this file in a browser:
+          file:///root/.local/share/jupyter/runtime/nbserver-6-open.html
+      Or copy and paste one of these URLs:
+          http://(33f93e2264e5 or 127.0.0.1):8888/?token=71a0e2ea6efbdbbf3dca75e647a601ba93190c5be56fef5f
+  ```
+
+Open your browser on http://127.0.0.1:8888 and input the token string.
+For example in the above log the token string is
+`71a0e2ea6efbdbbf3dca75e647a601ba93190c5be56fef5f`.
+
+All the files inside this project will be available on the Jupyter
+workspace.
+
+### 7. Shutdown the Notebook
+
+Hit CTRL+C on the running Docker container anytime you want to stop
+the server.
+
+## Contributing
+
+If you have ideas on how to make this project better,
+contributions are always welcome, no matter how large or small.
+
+Head on to the [Github
+Repo](https://github.com/faeldon/data-science-stack) if you are
+interested.
+
