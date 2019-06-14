@@ -169,6 +169,13 @@ const SEO = props => {
       {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
       {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
       <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
+      {/* Added consent manager Metomic */}
+      <script>{`
+        !function(p,r,i,v,a,c,y){p.Metomic={apiKey:i};p[i]||(p[i]=function(){
+        (p[i].q=p[i].q||[]).push(arguments)});p[i].l=+new Date;c=r.createElement(v);
+        y=r.getElementsByTagName(v)[0];p.Metomic.script=c;c.src=a;y.parentNode.insertBefore(c,y)}
+        (window,document,'prj:5a3590a4-edd1-41d3-807c-66d4307a0a83','script','https://consent-manager.metomic.io/embed.js');
+      `}</script>
     </Helmet>
   )
 }

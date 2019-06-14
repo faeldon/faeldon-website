@@ -207,6 +207,7 @@ const Layout = ({ children, customSEO }) => {
           &copy; 2019 by James Faeldon. All rights reserved. <br />
           <a href="https://github.com/faeldon/faeldon-website">GitHub Repository</a> |
           <a href="https://ko-fi.com/Y8Y2WTQ9">Support Me on Ko-fi</a> <br />
+          <a href="javascript:window.Metomic.raise()">manage cookies</a>
           <span>Last build: {buildTime}</span>
         </Footer>
       </>
