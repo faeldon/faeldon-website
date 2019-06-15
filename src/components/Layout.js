@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
-
 import SEO from './SEO'
 import theme from '../../config/theme'
 import useBuildTime from '../hooks/useBuildTime'
@@ -197,11 +196,10 @@ const Footer = styled.footer`
 const Layout = ({ children, customSEO }) => {
   const buildTime = useBuildTime()
 
-  useEffect(() => {
-    if (window.Metomic && window.Metomic.raise) {
-      window.Metomic.raise()
-    }
-  })
+  const manageCookiesHandler = evt => {
+    window.Metomic.raise()
+    evt.preventDefault()
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -212,7 +210,11 @@ const Layout = ({ children, customSEO }) => {
         <Footer>
           &copy; 2019 by James Faeldon. All rights reserved. <br />
           <a href="https://github.com/faeldon/faeldon-website">GitHub Repository</a> |
-          <a href="https://ko-fi.com/Y8Y2WTQ9">Support Me on Ko-fi</a> <br />
+          <a href="https://ko-fi.com/Y8Y2WTQ9">Support Me on Ko-fi</a> |
+          <a href="/" onClick={manageCookiesHandler}>
+            Manage Cookies
+          </a>
+          <br />
           {/* <a href="javascript:window.Metomic.raise()">manage cookies</a> */}
           <span>Last build: {buildTime}</span>
         </Footer>

@@ -11,7 +11,7 @@ Typography driven blog site, focus on the content, code & minimal style.
 
 It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and [Netlify](https://www.netlify.com) for continuous deployment, and CDN distribution.
 
-This repo is built with [Gatsby](https://www.gatsbyjs.org/), and [Netlify CMS](https://www.netlifycms.org)
+This repo is built with [Gatsby](https://www.gatsbyjs.org/), and [Netlify](https://www.netlify.com)
 
 Web design by [LekoArts Minimal Blog](https://github.com/LekoArts/gatsby-starter-minimal-blog)
 
@@ -32,11 +32,19 @@ Web design by [LekoArts Minimal Blog](https://github.com/LekoArts/gatsby-starter
 
 ## Getting Started (Recommended)
 
-Netlify CMS can run in any frontend web environment, but the quickest way to try it out is by running it on a pre-configured starter site with Netlify. The example here is the Kaldi coffee company template (adapted from [One Click Hugo CMS](https://github.com/netlify-templates/one-click-hugo-cms)). Use the link below to build and deploy your own copy of the repository:
+Netlify can run in any frontend web environment, but the quickest way
+to try it out is by running it on a pre-configured starter site with
+Netlify.
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/faeldon/faeldon-website&amp;stack=cms)
 
-After clicking the link, you’ll authenticate with GitHub and choose a repository name. Netlify will then automatically create a repository in your GitHub account with a copy of the files from the template. Next, it will build and deploy the new site on Netlify, bringing you to the site dashboard when the build is complete. Next, you’ll need to set up Netlify’s Identity service to authorize users to log in to the CMS.
+After clicking the link, you’ll authenticate with GitHub and choose a
+repository name. Netlify will then automatically create a repository
+in your GitHub account with a copy of the files from the template.
+Next, it will build and deploy the new site on Netlify, bringing you
+to the site dashboard when the build is complete. Next, you’ll need to
+set up Netlify’s Identity service to authorize users to log in to the
+CMS.
 
 
 ### Access Locally
