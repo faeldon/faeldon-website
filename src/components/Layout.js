@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
@@ -197,6 +197,12 @@ const Footer = styled.footer`
 const Layout = ({ children, customSEO }) => {
   const buildTime = useBuildTime()
 
+  useEffect(() => {
+    if (window.Metomic && window.Metomic.raise) {
+      window.Metomic.raise()
+    }
+  })
+
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -207,7 +213,7 @@ const Layout = ({ children, customSEO }) => {
           &copy; 2019 by James Faeldon. All rights reserved. <br />
           <a href="https://github.com/faeldon/faeldon-website">GitHub Repository</a> |
           <a href="https://ko-fi.com/Y8Y2WTQ9">Support Me on Ko-fi</a> <br />
-          <a href="javascript:window.Metomic.raise()">manage cookies</a>
+          {/* <a href="javascript:window.Metomic.raise()">manage cookies</a> */}
           <span>Last build: {buildTime}</span>
         </Footer>
       </>
