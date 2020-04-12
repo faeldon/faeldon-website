@@ -51,8 +51,7 @@ const IndexPage = ({
       <Hero>
         <h1>Hi.</h1>
         <p>
-          I&apos;m James Faeldon a software engineer, tech entrepreneur living
-          in Manila.
+          I&apos;m James Faeldon a software engineer based in Manila.
         </p>
         <Link to="/contact">
           <Button big>

@@ -46,10 +46,11 @@ Finally, it will build and deploy the new site on Netlify, bringing you
 to the site dashboard when the build is complete.
 
 
-### Access Locally
+### Develop Locally
 ```
 $ git clone https://github.com/[GITHUB_USERNAME]/[REPO_NAME].git
 $ cd [REPO_NAME]
+$ npm install
 $ npm run develop
 ```
 
