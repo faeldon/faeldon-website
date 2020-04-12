@@ -208,7 +208,7 @@ const Layout = ({ children, customSEO }) => {
         <GlobalStyle />
         {children}
         <Footer>
-          &copy; 2019 by James Faeldon. All rights reserved. <br />
+          &copy; 2020 by James Faeldon. All rights reserved. <br />
           <a href="https://github.com/faeldon/faeldon-website">GitHub Repository</a> |
           <a href="https://ko-fi.com/Y8Y2WTQ9">Support Me on Ko-fi</a> |
           <a href="/" onClick={manageCookiesHandler}>
