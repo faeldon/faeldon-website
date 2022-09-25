@@ -31,7 +31,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
-    "react-live": "^2.2.1",
+    "react-live": "^2.4.1",
     "styled-components": "^4.4.0",
     "typeface-bitter": "^0.0.71",
     "typeface-open-sans": "^0.0.75"
