@@ -54,7 +54,7 @@
     "format": "prettier --parser mdx --write \"blog/**/**/*.mdx\""
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
+    "@babel/eslint-parser": "^7.11.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^4.3.0",
