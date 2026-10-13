@@ -25,7 +25,7 @@
     "gatsby-source-filesystem": "^2.1.32",
     "lodash": "^4.17.15",
     "mdx-utils": "^0.2.0",
-    "polished": "^3.4.1",
+    "polished": "^3.7.2",
     "prism-react-renderer": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
