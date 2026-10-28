@@ -1,0 +1,23 @@
+# Only the keys that differ from the plugin's defaults.
+
+[commands]
+# The gate /sdlc:ship runs: the same ESLint run CircleCI does, without the junit output.
+check = "yarn lint"
+# The slower check: Netlify's own build. Run when a change touches anything Gatsby compiles,
+# posts included, since a bad MDX file or a missing image fails only at build time.
+build = "yarn build"
+build_when = "^(src/|config/|blog/|static/|gatsby-[a-z]+\\.js$|wrap-root-element\\.js$|package\\.json$|yarn\\.lock$)"
+# A fresh worktree has no node_modules; install them from the lockfile, as CI does.
+worktree_setup = "cd {worktree} && yarn install --frozen-lockfile"
+
+[docs]
+# CLAUDE.md only imports AGENTS.md; the invariants live in AGENTS.md.
+policy = "AGENTS.md"
+
+[archive]
+# Changes are tracked on GitHub: each one is numbered by its issue on faeldon/faeldon-website.
+target = "github"
+
+[git]
+# The repo's branch is master, not main; pinned so a change to origin/HEAD never moves it.
+base = "master"

@@ -60,3 +60,6 @@ bundle-stats.json
 
 # Cruft
 .DS_Store
+
+# sdlc: one worktree per change
+.claude/worktrees/

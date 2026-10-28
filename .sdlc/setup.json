@@ -1,0 +1,71 @@
+{
+  "version": "1.5.0",
+  "config_keys": [
+    "archive.command",
+    "archive.target",
+    "commands.build",
+    "commands.build_when",
+    "commands.check",
+    "commands.close_cleanup",
+    "commands.close_list",
+    "commands.scan",
+    "commands.worktree_setup",
+    "docs.context",
+    "docs.direction",
+    "docs.explore",
+    "docs.health",
+    "docs.policy",
+    "docs.process",
+    "docs.product",
+    "docs.project",
+    "docs.read_before_design",
+    "docs.review",
+    "git.base",
+    "metrics.idle_minutes",
+    "metrics.stop_allowance",
+    "metrics.transcripts",
+    "release.after_bump",
+    "release.changelog",
+    "release.deprecations",
+    "release.prepare",
+    "release.publish",
+    "release.remote",
+    "release.tag",
+    "release.version_files",
+    "retro.after_releases",
+    "retro.evidence"
+  ],
+  "docs": {
+    "process": {
+      "path": ".sdlc/SDLC.md",
+      "layout": "answers",
+      "guide": "sha256:d893bfba47ad02ba"
+    },
+    "review": {
+      "path": ".sdlc/REVIEW.md",
+      "layout": "answers",
+      "guide": "sha256:0a75923e261b8fc1"
+    }
+  },
+  "templates": {
+    "checks.md": "sha256:d4ba97e6351ca8b5",
+    "direction.md": "sha256:a0a6652daa7e6765",
+    "inbox.md": "sha256:97a3b22b5151ebba",
+    "intent.md": "sha256:bfb0464c4b5e5f71",
+    "issue.md": "sha256:8244f74828b145b1",
+    "notes.md": "sha256:b7a4be5bca95078c",
+    "plan.md": "sha256:c8f2e95ebf1071df",
+    "spec.md": "sha256:44e198408d01b8a0"
+  },
+  "created": [
+    ".claude/settings.json",
+    ".github/ISSUE_TEMPLATE/sdlc-bug.yml",
+    ".github/ISSUE_TEMPLATE/sdlc-request.yml",
+    ".sdlc/REVIEW.md",
+    ".sdlc/SDLC.md",
+    ".sdlc/config.toml",
+    "AGENTS.md",
+    "CLAUDE.md"
+  ],
+  "gitignore_line": true
+}
