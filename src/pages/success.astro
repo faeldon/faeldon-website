@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Wrapper from '../components/Wrapper.astro'
+import Header from '../components/Header.astro'
+import config from '../config'
+---
+
+<BaseLayout title={`Contact | ${config.siteTitle}`}>
+  <Wrapper>
+    <Header />
+    <div class="card">
+      <h1>Your message was sent!</h1>
+      <p>I'll answer your request as quick as possible.</p>
+    </div>
+  </Wrapper>
+</BaseLayout>

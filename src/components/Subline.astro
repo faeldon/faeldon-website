@@ -1,0 +1,22 @@
+---
+interface Props {
+  sectionTitle?: boolean
+}
+const { sectionTitle = false } = Astro.props
+---
+
+<div class:list={['subline', { 'section-title': sectionTitle }]}>
+  <slot />
+</div>
+
+<style>
+  .subline {
+    font-size: var(--font-small);
+    color: var(--grey-light);
+  }
+  .section-title {
+    margin-top: -3rem;
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+</style>

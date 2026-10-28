@@ -1,34 +1,29 @@
 {
-  "extends": [
-    "config:base"
-  ],
+  "extends": ["config:recommended"],
   "automerge": true,
+  "platformAutomerge": false,
+  "ignoreTests": false,
   "major": {
     "automerge": false
   },
   "packageRules": [
     {
-      "packagePatterns": ["^eslint"],
+      "matchPackageNames": ["/^eslint/", "/^@eslint//", "typescript-eslint"],
       "groupName": "eslint"
     },
     {
-      "packagePatterns": ["gatsby"],
-      "groupName": "gatsby"
+      "matchPackageNames": ["astro", "/^@astrojs//", "prettier-plugin-astro", "eslint-plugin-astro"],
+      "groupName": "astro"
     },
     {
-      "packagePatterns": ["@mdx-js"],
-      "groupName": "@mdx-js"
-    },
-    {
-      "packageNames": ["react", "react-dom"],
-      "groupName": "react"
+      "matchPackageNames": ["/^@fontsource//"],
+      "groupName": "fonts"
     }
   ],
   "labels": ["renovate"],
   "prHourlyLimit": 4,
   "prConcurrentLimit": 15,
   "rangeStrategy": "bump",
-  "bumpVersion": null,
-  "semanticCommits": true,
-  "schedule": "before 8am on Monday"
+  "semanticCommits": "enabled",
+  "schedule": ["before 8am on Monday"]
 }

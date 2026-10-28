@@ -1,0 +1,224 @@
+/* Port of the Gatsby site's createGlobalStyle (Layout.js) and theme (config/theme.js), value for value.
+   Breakpoints are literal in media queries: tablet 1200px, phone 600px. */
+:root {
+  --primary: #ff5f5f;
+  --primary-light: #ff7878; /* lighten(0.05, primary) */
+  --primary-dark: #ff2c2c; /* darken(0.1, primary), header gradient */
+  --primary-lighter: #ff9292; /* lighten(0.1, primary), header gradient */
+  --bg: white;
+  --white: white;
+  --grey-dark: rgba(0, 0, 0, 0.9);
+  --grey-default: rgba(0, 0, 0, 0.7);
+  --grey-light: rgba(0, 0, 0, 0.5);
+  --grey-ultra-light: rgba(0, 0, 0, 0.25);
+  --transition: 0.5s;
+  --font-small: 0.9rem;
+  --font-serif: 'Bitter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', serif;
+  --font-sans: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --max-width: 1000px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+::selection {
+  color: var(--bg);
+  background: var(--primary);
+}
+html {
+  font-family: var(--font-sans);
+  font-size: 18px;
+}
+h1 {
+  font-size: 3.052rem;
+}
+h2 {
+  font-size: 2.441rem;
+}
+h3 {
+  font-size: 1.953rem;
+}
+h4 {
+  font-size: 1.563rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+@media (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 2.488rem;
+  }
+  h2 {
+    font-size: 2.074rem;
+  }
+  h3 {
+    font-size: 1.728rem;
+  }
+  h4 {
+    font-size: 1.444rem;
+  }
+  h5 {
+    font-size: 1.2rem;
+  }
+}
+body {
+  background: var(--bg);
+  color: var(--grey-default);
+}
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+a:hover {
+  color: var(--primary-light);
+}
+a:not([href]):not([tabindex]),
+a:not([href]):not([tabindex]):hover,
+a:not([href]):not([tabindex]):focus {
+  color: inherit;
+  text-decoration: none;
+}
+a:not([href]):not([tabindex]):focus {
+  outline: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--grey-dark);
+  font-family: var(--font-serif);
+}
+blockquote {
+  font-style: italic;
+  position: relative;
+}
+blockquote:before {
+  content: '';
+  position: absolute;
+  background: var(--primary);
+  height: 100%;
+  width: 6px;
+  margin-left: -1.6rem;
+}
+label {
+  margin-bottom: 0.5rem;
+  color: var(--grey-dark);
+}
+input,
+textarea,
+button {
+  font-size: 1rem;
+}
+textarea {
+  font-family: var(--font-sans);
+}
+input,
+textarea {
+  border-radius: 0.5rem;
+  border: none;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.4rem 1rem;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+}
+pre {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto;
+}
+figure {
+  margin: 0 0 1rem 0;
+}
+img {
+  vertical-align: middle;
+}
+[role='button'] {
+  cursor: pointer;
+}
+a,
+area,
+button,
+[role='button'],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+table {
+  border-collapse: collapse;
+  background-color: var(--bg);
+}
+caption {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  text-align: center;
+  caption-side: bottom;
+}
+th {
+  text-align: left;
+}
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+}
+input[type='search'] {
+  -webkit-appearance: none;
+}
+output {
+  display: inline-block;
+}
+svg:not(:root) {
+  overflow: hidden;
+  vertical-align: middle;
+}
+[hidden] {
+  display: none !important;
+}
+
+/* The white card every page but the index sits in, overlapping the header (post.js, category.js…). */
+.card {
+  grid-column: 2;
+  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 2rem 4rem;
+  background-color: var(--bg);
+  z-index: 9000;
+  margin-top: -3rem;
+}
+@media (max-width: 1200px) {
+  .card {
+    padding: 3rem 3rem;
+  }
+}
+@media (max-width: 600px) {
+  .card {
+    padding: 2rem 1.5rem;
+  }
+}

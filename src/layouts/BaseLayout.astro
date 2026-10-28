@@ -1,0 +1,40 @@
+---
+import '@fontsource/bitter/400.css'
+import '@fontsource/bitter/700.css'
+import '@fontsource/open-sans/400.css'
+import '@fontsource/open-sans/700.css'
+import '../styles/global.css'
+import config from '../config'
+import SEO from '../components/SEO.astro'
+import type { Post } from '../lib/posts'
+
+interface Props {
+  title?: string
+  post?: Post
+}
+const { title, post } = Astro.props
+---
+
+<!doctype html>
+<html lang={config.siteLanguage}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SEO title={title} post={post} />
+  </head>
+  <body>
+    <slot />
+    <footer>
+      &copy; 2020 by James Faeldon. All rights reserved. <br />
+      <a href="https://github.com/faeldon/faeldon-website">GitHub Repository</a> |
+      <a href="https://ko-fi.com/Y8Y2WTQ9">Support Me on Ko-fi</a>
+    </footer>
+  </body>
+</html>
+
+<style>
+  footer {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+</style>

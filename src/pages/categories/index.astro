@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Wrapper from '../../components/Wrapper.astro'
+import Header from '../../components/Header.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
+import config from '../../config'
+import { categoryPath, getSortedPosts } from '../../lib/posts'
+
+const counts = new Map<string, number>()
+for (const post of await getSortedPosts()) {
+  for (const cat of post.data.categories) counts.set(cat, (counts.get(cat) ?? 0) + 1)
+}
+// Gatsby's group(field: categories) listed them alphabetically.
+const categories = [...counts].sort(([a], [b]) => a.localeCompare(b))
+---
+
+<BaseLayout title={`Categories | ${config.siteTitle}`}>
+  <Wrapper>
+    <Header />
+    <div class="card">
+      <SectionTitle>Categories</SectionTitle>
+      {categories.map(([cat, count]) => (
+        <h3>
+          <a href={categoryPath(cat)}>{cat}</a> ({count})
+        </h3>
+      ))}
+    </div>
+  </Wrapper>
+</BaseLayout>
+
+<style>
+  h3 {
+    position: relative;
+    text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    margin-bottom: 0.75rem;
+  }
+</style>

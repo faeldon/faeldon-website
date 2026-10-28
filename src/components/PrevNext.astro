@@ -1,0 +1,46 @@
+---
+import { postPath, type Post } from '../lib/posts'
+
+interface Props {
+  prev?: Post
+  next?: Post
+}
+const { prev, next } = Astro.props
+---
+
+<div class="prev-next">
+  {prev && (
+    <div class="prev">
+      <span>Previous</span>
+      <a href={postPath(prev)}>{prev.data.title}</a>
+    </div>
+  )}
+  {next && (
+    <div class="next">
+      <span>Next</span>
+      <a href={postPath(next)}>{next.data.title}</a>
+    </div>
+  )}
+</div>
+
+<style>
+  .prev-next {
+    display: flex;
+    margin: 6rem auto 0 auto;
+    justify-items: center;
+  }
+  a {
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+  }
+  .next {
+    margin-left: auto;
+    text-align: right;
+  }
+  span {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--grey-light);
+  }
+</style>

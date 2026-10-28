@@ -1,0 +1,102 @@
+---
+import { render } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Wrapper from '../components/Wrapper.astro'
+import Header from '../components/Header.astro'
+import PostMeta from '../components/PostMeta.astro'
+import PrevNext from '../components/PrevNext.astro'
+import { getSortedPosts, postSlug, type Post } from '../lib/posts'
+
+export async function getStaticPaths() {
+  const posts = await getSortedPosts()
+  // Newest first: "next" is the newer post, "prev" the older one, as gatsby-node.js paired them.
+  return posts.map((post, i) => ({
+    params: { slug: postSlug(post) },
+    props: { post, next: posts[i - 1], prev: posts[i + 1] },
+  }))
+}
+
+interface Props {
+  post: Post
+  prev?: Post
+  next?: Post
+}
+const { post, prev, next } = Astro.props
+const { Content } = await render(post)
+---
+
+<BaseLayout post={post}>
+  <Wrapper>
+    <Header />
+    <article class="card">
+      <h1>{post.data.title}</h1>
+      <PostMeta post={post} />
+      <div class="post-content">
+        <Content />
+      </div>
+      <PrevNext prev={prev} next={next} />
+    </article>
+  </Wrapper>
+</BaseLayout>
+
+<style>
+  article {
+    max-width: 1000px;
+    padding: 2rem 4.5rem;
+  }
+  h1 {
+    margin-bottom: 1rem;
+  }
+  .post-content {
+    margin-top: 4rem;
+  }
+  article :global(p) {
+    font-size: 1.1rem;
+    letter-spacing: -0.003em;
+    line-height: 1.58;
+  }
+  article :global(pre) {
+    padding: 0.75rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-size: 16px;
+  }
+  article :global(img) {
+    max-width: 100%;
+  }
+  article :global(iframe) {
+    max-width: 100%;
+    border: 0;
+  }
+  /* Heading permalinks, styled as gatsby-remark-autolink-headers styled them. */
+  .post-content :global(:is(h1, h2, h3, h4, h5, h6)) {
+    position: relative;
+  }
+  .post-content :global(.anchor) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    padding-right: 4px;
+  }
+  .post-content :global(.anchor svg) {
+    visibility: hidden;
+  }
+  .post-content :global(:is(h1, h2, h3, h4, h5, h6):hover .anchor svg),
+  .post-content :global(.anchor:focus svg) {
+    visibility: visible;
+  }
+  @media (max-width: 1200px) {
+    article {
+      padding: 3rem 3rem;
+    }
+  }
+  @media (max-width: 600px) {
+    article {
+      padding: 2rem 1.5rem;
+    }
+    article :global(p) {
+      font-size: 1rem;
+    }
+  }
+</style>

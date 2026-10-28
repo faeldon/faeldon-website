@@ -1,0 +1,57 @@
+---
+import { excerpt, postPath, type Post } from '../lib/posts'
+import PostMeta from './PostMeta.astro'
+
+interface Props {
+  post: Post
+}
+const { post } = Astro.props
+---
+
+<article>
+  <h2>
+    <span class="initiale">{post.data.title.charAt(0)}</span>
+    <a href={postPath(post)}>{post.data.title}</a>
+  </h2>
+  <PostMeta post={post} />
+  <p>{excerpt(post.body ?? '')}</p>
+</article>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+  }
+  @media (max-width: 600px) {
+    article {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+  h2 {
+    position: relative;
+    text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    margin-bottom: 0.75rem;
+  }
+  h2 a {
+    color: var(--grey-dark);
+  }
+  h2 a:hover {
+    color: var(--primary-light);
+  }
+  .initiale {
+    position: absolute;
+    font-size: 7rem;
+    transform: translate(-50%, -50%);
+    opacity: 0.08;
+    user-select: none;
+    z-index: -1;
+  }
+  p {
+    grid-column: -1 / 1;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+</style>

@@ -1,0 +1,8 @@
+# Posts keep their words and formatting as written.
+blog/
+dist/
+.astro/
+.sdlc/
+.claude/
+*.md
+package-lock.json

@@ -1,14 +1,14 @@
 # Only the keys that differ from the plugin's defaults.
 
 [commands]
-# The gate /sdlc:ship runs: the same ESLint run CircleCI does, without the junit output.
-check = "yarn lint"
-# The slower check: Netlify's own build. Run when a change touches anything Gatsby compiles,
-# posts included, since a bad MDX file or a missing image fails only at build time.
-build = "yarn build"
-build_when = "^(src/|config/|blog/|static/|gatsby-[a-z]+\\.js$|wrap-root-element\\.js$|package\\.json$|yarn\\.lock$)"
+# The gate /sdlc:ship runs: ESLint and Prettier, the first step CI runs.
+check = "npm run lint"
+# The slower check: astro check and the full static build Netlify runs. Run when a change touches
+# anything Astro compiles, posts included, since a bad MDX file or a missing image fails only here.
+build = "npm run build"
+build_when = "^(src/|public/|blog/|scripts/|astro\\.config\\.mjs$|package(-lock)?\\.json$|netlify\\.toml$|tsconfig\\.json$)"
 # A fresh worktree has no node_modules; install them from the lockfile, as CI does.
-worktree_setup = "cd {worktree} && yarn install --frozen-lockfile"
+worktree_setup = "cd {worktree} && npm ci"
 
 [docs]
 # CLAUDE.md only imports AGENTS.md; the invariants live in AGENTS.md.

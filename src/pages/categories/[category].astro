@@ -1,0 +1,42 @@
+---
+import kebabCase from 'lodash/kebabCase'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Wrapper from '../../components/Wrapper.astro'
+import Header from '../../components/Header.astro'
+import SectionTitle from '../../components/SectionTitle.astro'
+import Subline from '../../components/Subline.astro'
+import Article from '../../components/Article.astro'
+import config from '../../config'
+import { getSortedPosts, type Post } from '../../lib/posts'
+
+export async function getStaticPaths() {
+  const posts = await getSortedPosts()
+  const categories = [...new Set(posts.flatMap((post) => post.data.categories))]
+  return categories.map((category) => ({
+    params: { category: kebabCase(category) },
+    props: { category, posts: posts.filter((post) => post.data.categories.includes(category)) },
+  }))
+}
+
+interface Props {
+  category: string
+  posts: Post[]
+}
+const { category, posts } = Astro.props
+const subline = `${posts.length} post${posts.length === 1 ? '' : 's'} tagged with "${category}"`
+---
+
+<BaseLayout title={`Category: ${category} | ${config.siteTitle}`}>
+  <Wrapper>
+    <Header />
+    <div class="card">
+      <SectionTitle>Category &ndash; {category}</SectionTitle>
+      <Subline sectionTitle>
+        {subline} (See <a href="/categories">all categories</a>)
+      </Subline>
+      {posts.map((post) => (
+        <Article post={post} />
+      ))}
+    </div>
+  </Wrapper>
+</BaseLayout>

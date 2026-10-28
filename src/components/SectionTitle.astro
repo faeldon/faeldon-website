@@ -1,0 +1,26 @@
+<div class="section-title">
+  <slot />
+</div>
+
+<style>
+  .section-title {
+    font-size: var(--font-small);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    color: var(--grey-dark);
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 4rem;
+  }
+  .section-title:after {
+    content: '';
+    height: 1px;
+    width: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -25px;
+    background: var(--grey-ultra-light);
+  }
+</style>

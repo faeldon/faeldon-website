@@ -1,0 +1,84 @@
+---
+import { getImage } from 'astro:assets'
+import config from '../config'
+import favicon from '../favicon.png'
+import { excerpt, postPath, type Post } from '../lib/posts'
+
+interface Props {
+  title?: string
+  post?: Post
+}
+const { title: pageTitle, post } = Astro.props
+
+const homeURL = config.siteUrl
+const URL = post ? `${homeURL}${postPath(post)}` : new globalThis.URL(Astro.url.pathname, homeURL).href
+const image = `${homeURL}${config.siteBanner}`
+const title = post ? `${post.data.title} | ${config.siteTitle}` : (pageTitle ?? config.siteTitleAlt)
+const description = post ? excerpt(post.body ?? '', 140) : config.siteDescription
+const icon = await getImage({ src: favicon, width: 32, height: 32, format: 'png' })
+const author = { '@type': 'Person', name: config.author }
+
+// schema.org in JSONLD format
+// https://developers.google.com/search/docs/guides/intro-structured-data
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, item: { '@id': homeURL, name: 'Homepage' } },
+    ...(post ? [{ '@type': 'ListItem', position: 2, item: { '@id': URL, name: title } }] : []),
+  ],
+}
+const schema = post
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.data.title,
+      description,
+      url: URL,
+      mainEntityOfPage: URL,
+      inLanguage: config.siteLanguage,
+      datePublished: post.data.date.toISOString(),
+      author,
+      publisher: {
+        '@type': 'Organization',
+        name: config.author,
+        logo: { '@type': 'ImageObject', url: `${homeURL}${config.siteLogo}` },
+      },
+      image: { '@type': 'ImageObject', url: image },
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': Astro.url.pathname === '/' ? 'WebSite' : 'WebPage',
+      url: URL,
+      name: config.siteTitle,
+      headline: config.siteHeadline,
+      description: config.siteDescription,
+      inLanguage: config.siteLanguage,
+      author,
+      image: { '@type': 'ImageObject', url: image },
+    }
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="image" content={image} />
+<link rel="canonical" href={URL} />
+<link rel="icon" type="image/png" href={icon.src} />
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content={config.themeColor} />
+<meta property="og:locale" content={config.ogLanguage} />
+<meta property="og:site_name" content={config.ogSiteName} />
+<meta property="og:url" content={URL} />
+<meta property="og:type" content={post ? 'article' : 'website'} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:image:alt" content={description} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content={config.userTwitter} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:url" content={config.siteUrl} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />

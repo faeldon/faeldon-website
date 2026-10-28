@@ -1,0 +1,17 @@
+# Every path in https://james.faeldon.com/sitemap.xml as of 2026-10-28, the last Gatsby build.
+# Published URLs don't move: scripts/check-urls.mjs fails the build if any of these is missing.
+/tracking-covid-19-cost-of-assistance-in-the-philippines
+/generating-descendant-table-using-spark-graph-x
+/sims-4-random-legacy-roller
+/a-simple-docker-image-for-data-science-teams
+/json-maps-of-philippine-administrative-boundaries
+/this-blog-site-is-alive
+/categories/data-science
+/categories/data-engineering
+/categories/coding
+/categories/gaming
+/categories/dev-ops
+/categories/
+/contact/
+/
+/success/

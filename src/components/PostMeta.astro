@@ -1,0 +1,19 @@
+---
+import { categoryPath, formatDate, timeToRead, type Post } from '../lib/posts'
+import Subline from './Subline.astro'
+
+interface Props {
+  post: Post
+}
+const { post } = Astro.props
+---
+
+<Subline>
+  {formatDate(post.data.date)} &mdash; {timeToRead(post.body ?? '')} Min Read &mdash; In{' '}
+  {post.data.categories.map((cat, i) => (
+    <>
+      {i > 0 && ', '}
+      <a href={categoryPath(cat)}>{cat}</a>
+    </>
+  ))}
+</Subline>

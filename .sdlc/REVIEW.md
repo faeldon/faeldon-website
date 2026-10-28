@@ -11,11 +11,12 @@
 ### The ways this repo's code fails
 
 - **Lint left for CI.** Five commits in the history only fix lint errors after the fact. Every
-  `.js` change has to pass `yarn lint` before it lands, not after.
+  change has to pass `npm run lint` before it lands, not after.
 - **Slugs that move.** Custom slugs have been overwritten by title-derived ones before (upstream
-  #68). Check that any change near `onCreateNode` or post frontmatter keeps every existing URL.
+  #68). Check that any change near `src/lib/posts.ts` or post frontmatter keeps every existing
+  URL, and that `npm run check:urls` still lists them all.
 - **Third-party scripts that misbehave.** The Metomic cookie-consent prompt kept reappearing
-  (#5) and needed lint fixes of its own. A script added through `gatsby-ssr.js`,
-  `gatsby-browser.js` or Helmet needs checking on a real page load, not just a build.
+  (#5) and needed lint fixes of its own. A script added through `src/layouts/BaseLayout.astro`
+  or `src/components/SEO.astro` needs checking on a real page load, not just a build.
 - **Broken external links.** The ko-fi and funding links have each needed fixing. Check that a
-  changed URL in `config/`, the footer or `FUNDING.yml` actually resolves.
+  changed URL in `src/config.ts`, the footer or `FUNDING.yml` actually resolves.

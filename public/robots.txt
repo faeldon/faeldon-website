@@ -1,0 +1,3 @@
+User-agent: *
+
+sitemap: https://james.faeldon.com/sitemap-index.xml
