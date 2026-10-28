@@ -1,0 +1,127 @@
+---
+date: "2026-10-29"
+title: "JSON Maps of Philippine Administrative Boundaries"
+categories:
+  - Coding
+  - Data Science
+---
+
+### Philippine administrative boundaries in GeoJSON and TopoJSON, from the regions down to the barangays.
+
+[Github Project](https://github.com/faeldon/philippines-json-maps)
+
+*I first wrote this post in June 2019. The project has changed a lot since then, so I rewrote it
+in October 2026 for the v1.1.0 maps.*
+
+The repository has vector maps of the Philippines that you can use right away in a web map,
+either as an overlay in [Leaflet](https://leafletjs.com) or [MapLibre](https://maplibre.org), or
+drawn on a canvas with [d3](https://d3js.org). Every area carries its Philippine Standard
+Geographic Code (PSGC) and the codes of its parents, so you can join the maps to PSA statistics
+or any other dataset keyed by PSGC.
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1rem', alignItems: 'end' }}>
+  <img src="/img/philippines-json-maps/islandgroups.svg" alt="The island groups of the Philippines: Luzon, Visayas and Mindanao" />
+  <img src="/img/philippines-json-maps/regions.svg" alt="The 18 regions of the Philippines" />
+  <img src="/img/philippines-json-maps/provinces.svg" alt="The provinces of the Negros Island Region" />
+  <img src="/img/philippines-json-maps/municities.svg" alt="The municipalities and cities of Negros Occidental" />
+</div>
+
+*The island groups, the 18 regions, the provinces of the Negros Island Region, and the
+municipalities and cities of Negros Occidental, drawn from the low resolution files by
+[sample-maps.sh](https://github.com/faeldon/philippines-json-maps/blob/master/scripts/sample-maps.sh).
+Boundaries by NAMRIA and PSA, through OCHA's COD-AB.*
+
+## Background
+
+A few years ago, I was looking for low resolution map files that I could use to render a natural
+hazards map on the web. I found high resolution shapefiles, but I still had to do post-processing
+to make them fit what I needed. Basically, high resolution shapefiles are not practical for web
+maps because of their file size.
+
+I needed vector maps that render fast. I also wanted to split the map data so I could load parts
+of the map one at a time, only when they are needed. So I wrote a few scripts to do the
+conversion and the splitting.
+
+In 2026 I rebuilt the whole thing. The maps now come from the shapefiles in
+[philippines-psgc-shapefiles](https://github.com/faeldon/philippines-psgc-shapefiles), whose
+codes and names follow PSA's PSGC, and they are rebuilt every PSGC quarter. That is why the old
+`topojson/...` paths from 2019 are gone.
+
+## Getting the Maps
+
+The medium and low resolution files of the latest quarter are in the
+[latest](https://github.com/faeldon/philippines-json-maps/tree/master/latest) folder, and you can
+link to them directly. For example, here are the provinces of Region II in low resolution
+TopoJSON:
+
+[provdists-region-200000000.topo.0.001.json](https://raw.githubusercontent.com/faeldon/philippines-json-maps/master/latest/topojson/regions/lowres/provdists-region-200000000.topo.0.001.json)
+
+The `latest` folder moves to each new quarter, so a file there can change, or even be renamed.
+If you need a quarter that never changes, or the high resolution files, use the
+[releases](https://github.com/faeldon/philippines-json-maps/releases) instead. There is one
+release per quarter, with one zip per format and resolution and a `SHA256SUMS` file to check them
+against. A link like
+[topojson-lowres.zip](https://github.com/faeldon/philippines-json-maps/releases/latest/download/topojson-lowres.zip)
+always points to the latest one. The older maps are releases too:
+[2023-4q](https://github.com/faeldon/philippines-json-maps/releases/tag/2023-4q),
+[2019](https://github.com/faeldon/philippines-json-maps/releases/tag/2019) and
+[2011](https://github.com/faeldon/philippines-json-maps/releases/tag/2011).
+
+For most web maps, low or medium resolution is enough. Low resolution TopoJSON is the smallest,
+so it is the one to use for slow connections.
+
+## How the Files Are Organised
+
+Each file is one area holding its children. The country file holds the regions, a region file
+holds its provinces (or, for Metro Manila, its districts), a province or district file holds its
+municipalities and cities, and a municipality or city file holds its barangays. There is also an island groups file with Luzon, Visayas and
+Mindanao.
+
+A file's name tells you what is inside: the children, the parent level and the parent's PSGC
+code, then the simplification. For example, `municities-provdist-1804500000.0.001.json` holds the
+municipalities and cities of Negros Occidental. The simplification is 0.1 for high resolution
+(10% of the vertices), 0.01 for medium (1%) and 0.001 for low (0.1%).
+
+## A Few Things to Watch Out For
+
+PSGC codes are written as numbers, so the leading zeros are dropped. Region I is `100000000`, not
+`0100000000`, both in the file names and in the properties.
+
+Some codes changed in the third quarter of 2026. The Negros Island Region was created from Negros
+Occidental, Negros Oriental and Siquijor, and Sulu moved to Region IX, so their codes changed and
+so did the names of their files. The
+[v1.0.0 release notes](https://github.com/faeldon/philippines-json-maps/releases/tag/v1.0.0) list
+every renamed file.
+
+Island groups are not a PSGC level, so they have no code. Each one is the union of its regions,
+and its name is its id.
+
+## How it Works
+
+1. Each level's shapefile is filtered by parent and reprojected to WGS84 using
+   [ogr2ogr](https://gdal.org/programs/ogr2ogr.html).
+
+2. The result is simplified using [mapshaper](https://mapshaper.org) at 10% (hires), 1% (medres)
+   and 0.1% (lowres), keeping every shape.
+
+3. Each one is written as GeoJSON and as the more compact
+   [TopoJSON](https://github.com/topojson/topojson).
+
+You can look at the
+[scripts](https://github.com/faeldon/philippines-json-maps/tree/master/scripts) to see how I did
+it. I would recommend having a look at these tools if you want to do your own transformations.
+
+## Sources and License
+
+The boundaries come from OCHA's
+[Philippines administrative level 0-4 boundaries (COD-AB)](https://data.humdata.org/dataset/cod-ab-phl),
+by the National Mapping and Resource Information Authority (NAMRIA) and the Philippine
+Statistics Authority (PSA), licensed
+[CC BY-IGO](http://creativecommons.org/licenses/by/3.0/igo/legalcode). The scripts and maps in my
+repository are under the MIT License, but if you republish the boundaries, please credit NAMRIA
+and PSA through OCHA's COD-AB.
+
+## Contributing
+
+Contributions are always welcome, no matter how large or small.
+[Github Project Link](https://github.com/faeldon/philippines-json-maps)

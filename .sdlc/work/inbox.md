@@ -36,3 +36,27 @@ Paths: src/styles/global.css, src/pages/contact.astro
 Cost: S
 Value: low
 Raised by: 086-replatform-site (correctness)
+
+## [2026-10-29-1] [nit] JSON maps post not yet seen at phone width
+
+Change 087's outcome called for the rewritten post to be seen at desktop and phone width, but the
+browser window wouldn't shrink, so only desktop was looked at. The maps grid should fall to 2×2 on
+a 390px phone; check it on the live site.
+
+Theme: layout
+Paths: blog/2026-10-29/index.mdx
+Cost: S
+Value: med
+Raised by: 087-update-json-maps-post (correctness)
+
+## [2026-10-29-2] [nit] Stiff home-page excerpt for the JSON maps post
+
+The index excerpt reads "…down to the barangays. Github Project I first wrote this post in June
+2019…": the link text and the italic note run into the summary. Moving the note below the opening
+paragraph, or excluding link-only lines from excerpts, would fix it.
+
+Theme: content
+Paths: blog/2026-10-29/index.mdx, src/lib/posts.ts
+Cost: S
+Value: low
+Raised by: 087-update-json-maps-post (correctness)
