@@ -42,6 +42,11 @@ link and search result for that post.
 `node_modules`, which is gitignored. `commands.worktree_setup` runs `npm ci` in the new
 worktree. It needs Node 24 (`.nvmrc`), the version CI and Netlify use.
 
+Nothing from the main checkout: a worktree sits inside it, at `.claude/worktrees/NNN-slug/`, and
+`vite.tsconfig` in `astro.config.mjs` keeps the build on the worktree's own `tsconfig.json`.
+Without that line, Vite finds the main checkout's config too, and the build fails with
+`Tsconfig not found astro/tsconfigs/strict` whenever the main checkout has no `node_modules`.
+
 ## Running the stages
 
 ### Stage 1 — Plan → `/sdlc:intent`

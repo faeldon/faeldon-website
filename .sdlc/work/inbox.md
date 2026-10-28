@@ -60,3 +60,14 @@ Paths: blog/2026-10-29/index.mdx, src/lib/posts.ts
 Cost: S
 Value: low
 Raised by: 087-update-json-maps-post (correctness)
+
+## [2026-10-29-3] [nit] Confirm 088's fix with a bare main checkout
+
+Remove node_modules from the main checkout, then build in a fresh change worktree; it should pass
+with no manual step. 088 proved the fix on a reproduction outside the repo, not in place.
+
+Theme: tooling
+Paths: astro.config.mjs
+Cost: S
+Value: med
+Raised by: 088-worktree-build (correctness)

@@ -29,6 +29,10 @@ export default defineConfig({
   build: { format: 'directory' },
   trailingSlash: 'ignore',
   integrations: [mdx(), sitemap()],
+  // Pin this project's tsconfig. Vite otherwise finds the nearest one per file, and from an sdlc
+  // worktree (nested inside the main checkout) that reaches the main checkout's tsconfig.json,
+  // whose `extends` fails there unless it has its own node_modules.
+  vite: { tsconfig: './tsconfig.json' },
   markdown: {
     shikiConfig: { theme: 'dark-plus' },
     // Astro 7 runs rehype plugins only on the unified processor, which MDX inherits. Heading ids come
